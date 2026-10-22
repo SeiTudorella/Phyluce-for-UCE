@@ -11,6 +11,6 @@ This is a Hydra pipeline that uses read assembly as input for Phyluce and output
 
 Before you begin, you need:
  
-* a directory where trimmed reads are saved.
-* trimmed reads with file names compatible with Phyluce ("[sample_name].contigs.fasta"). The file name must begin with a letter, not a number.
+* a directory where assembly are saved.
+* assembly with file names compatible with Phyluce ("[sample_name].contigs.fasta"). The file name must begin with a letter, not a number.
 * UCE probes in FASTA format.
