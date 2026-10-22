@@ -38,6 +38,8 @@ echo = `date` job $JOB_NAME done
 ```
 ### To run this job
 
+First, create a new working directory to run Phyluce. 
+
 The assembled reads must conform to the format ```[samplename].contigs.fasta```, and the file name must begin with a letter.
 
 Edit these items in the job file:
@@ -49,7 +51,7 @@ Replace "path to assembly directory" with a full path to the assemblies.
    
 Replace "path to probes directory/UCEprobes.fasta" with a full path to the UCE probe file.
 
-After the job is edited, save it as 'matchcontigs.job' and run the job on hydra (qsub matchcontigs.job).
+After the job is edited, save it as 'matchcontigs.job' in the working directory and run the job on hydra (qsub matchcontigs.job).
 
 If the script needs to be rerun, remove the output directory (```rm -r```) before you re-submit the job.
 
@@ -61,9 +63,9 @@ This relaxes match criteria; optional but recommended.
 --min-identity 70 
 --min-coverage 70
 ```
-2. Cull short contigs from assembly
+2. Cull short contigs from assembly (do this before running 'matchcontigs.job')
 
-This removes short contigs from assembly (less than 200 bp in this example).
+This removes short contigs from assembly (less than 200 bp in this example), creates a new directory and saves processed contigs in it. Create a new job file using the QSub Generator. 
 ```
 module load bio/seqkit 
 mkdir -p contigsforUCE-gt200 
