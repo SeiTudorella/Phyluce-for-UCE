@@ -1,7 +1,7 @@
 Finding UCE Loci
 ---
 
-This script uses ```phyluce_assembly_match_contigs_to_probes``` command to match UCE probe sequences to assembled reads. 
+This script uses ```phyluce_assembly_match_contigs_to_probes``` command to match UCE probe sequences to assembled reads. It will create a file named ```probe.matches.sqlite``` in a new output directory.
 Before you start,
 1. Make sure the command is in one line. No comments and no hard returns. The comments are included in the script for clarification only.
 2. If the total size of assemblies are very large, increase the memory allocation. If you don't allocate enough memory, the job will die prematurely.
