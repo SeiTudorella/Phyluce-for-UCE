@@ -1,1 +1,44 @@
+This script uses phyluce_assembly_match_contigs_to_probes command to identify UCE loci within assembled reads. If the file size of assembled reads is large, you must increase memory allocation or the Phyluce run will die before completion.
+Make sure that the command is in one line - no hard returns! If you need to rerun the script, delete the output file before you re-submit the job.
 
+
+# /bin/sh 
+# ----------------Parameters---------------------- # 
+#$ -S /bin/sh 
+#$ -pe mthread 2 
+#$ -q mThC.q 
+#$ -l mres=20G,h_data=10G,h_vmem=10G,himem 
+#$ -cwd 
+#$ -j y 
+#$ -N matchcontigs 
+#$ -o matchcontigs.log 
+#$ -m bea 
+#$ -M seim@si.edu 
+# 
+# ----------------Modules------------------------- # 
+module load bioinformatics/phyluce/1.7.3 
+# ----------------Your Commands------------------- # 
+# 
+echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME 
+echo + NSLOTS = $NSLOTS 
+# 
+phyluce_assembly_match_contigs_to_probes  
+--contigs /scratch/genomics/seim/GENOSKIM/data/results/spades/Cernuella/contigsforUCE-gt200
+
+# this path must lead to a directory, not a file 
+--probes /scratch/genomics/seim/uce_tutorial/Pulmonata_mod_cleaned_phyluce_nofirst.fasta   
+#
+--output uce-search-results 
+# 
+echo = `date` job $JOB_NAME done 
+
+Options:
+
+This relaxes the probe-to-assembly match criteria. It is optional but sometimes recommended.
+--min-identity 70 
+--min-coverage 70 
+
+This deletes short contigs (less than 200 bp) to reduce the file size.
+module load bio/seqkit 
+mkdir -p contigsforUCE-gt200 
+for x in contigsforUCE/*fasta; do SEQ=$(basename $x); echo $SEQ; seqkit seq $x -w 0 --min-len 200 -o contigsforUCE-gt200/${SEQ}; done 
