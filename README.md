@@ -1,5 +1,5 @@
 # Phyluce-for-UCE
-Hydra job files that use trimmed reads as input for Phyluce and output UCE fasta files. I modified and updated the scripts found in the Phyluce Training for the Smithsonian Target Enrichment Workshop (https://github.com/SmithsonianWorkshops/Targeted_Enrichment/blob/master/phyluce.md)
+This is a Hydra pipeline that uses trimmed reads as input for Phyluce and output UCE fasta files. I modified and updated the scripts found in the Phyluce Training Tutorial for the Smithsonian Target Enrichment Workshop (https://github.com/SmithsonianWorkshops/Targeted_Enrichment/blob/master/phyluce.md), which was in turn modified from Brant Faircloth's (http://phyluce.readthedocs.org/en/latest/tutorial-one.html).
 
 1. Finding UCE Loci (command: phyluce_assembly_match_contigs_to_probes)
 
@@ -12,5 +12,5 @@ Hydra job files that use trimmed reads as input for Phyluce and output UCE fasta
 Before you begin, you need:
  
 * a directory to the trimmed reads.
-* Trimmed reads in the correct format for Phyluce ("[sample_name].contigs.fasta"). The file name must begin with a letter.
+* trimmed reads in the correct format for Phyluce ("[sample_name].contigs.fasta"). The file name must begin with a letter, not a number.
 * a FASTA file of UCE probes.
