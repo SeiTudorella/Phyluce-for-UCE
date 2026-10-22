@@ -1,3 +1,5 @@
+# Finding UCE Loci
+
 This script uses phyluce_assembly_match_contigs_to_probes command to identify UCE loci within assembled reads. If the file size of assembled reads is large, you must increase memory allocation or the Phyluce run will die before completion.
 Make sure that the command is in one line - no hard returns! If you need to rerun the script, delete the output file before you re-submit the job.
 
